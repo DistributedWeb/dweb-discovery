@@ -1,0 +1,34 @@
+{
+  "name": "dweb-discovery",
+  "version": "1.0.0",
+  "description": "Library for creating a dWebFS swarm.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && dependency-check . && node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karissa/hyperdiscovery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karissa/hyperdiscovery/issues"
+  },
+  "homepage": "https://github.com/karissa/hyperdiscovery#readme",
+  "dependencies": {
+    "dweb-swarm-defaults": "^1.0.0",
+    "dweb-discovery-swarm": "^1.0.0",
+    "safe-buffer": "^5.1.2",
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "dependency-check": "^3.1.0",
+    "hypercore": "^6.14.0",
+    "dappdb": "^1.0.0",
+    "dwebfs": "^1.1.0",
+    "random-access-memory": "^3.0.0",
+    "standard": "^11.0.1",
+    "tape": "^4.9.0"
+  }
+}
