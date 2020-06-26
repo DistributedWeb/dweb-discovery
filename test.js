@@ -1,13 +1,13 @@
 var tape = require('tape')
-var hypercore = require('hypercore')
-var hyperdb = require('hyperdb')
+var ddatabase = require('ddatabase')
+var dappdb = require('dappdb')
 var ram = require('random-access-memory')
 var swarm = require('.')
 
 function getHypercoreSwarms (opts, cb) {
-  var feed1 = hypercore(ram)
+  var feed1 = ddatabase(ram)
   feed1.once('ready', function () {
-    var feed2 = hypercore(ram, feed1.key)
+    var feed2 = ddatabase(ram, feed1.key)
     feed2.once('ready', function () {
       var write = swarm(feed1, opts)
       var read = swarm(feed2, opts)
@@ -18,9 +18,9 @@ function getHypercoreSwarms (opts, cb) {
 }
 
 function getDbSwarms (opts, cb) {
-  var db1 = hyperdb(ram, {valueEncoding: 'utf-8'})
+  var db1 = dappdb(ram, {valueEncoding: 'utf-8'})
   db1.once('ready', function () {
-    var db2 = hyperdb(ram, db1.key, {valueEncoding: 'utf-8'})
+    var db2 = dappdb(ram, db1.key, {valueEncoding: 'utf-8'})
     db2.once('ready', function () {
       var write = swarm(db1, opts)
       var read = swarm(db2, opts)
@@ -92,7 +92,7 @@ tape('connect without utp', function (t) {
   })
 })
 
-tape('hyperdb connect and close', function (t) {
+tape('dappdb connect and close', function (t) {
   t.plan(6)
   getDbSwarms({}, function (swarms) {
     var write = swarms[0]

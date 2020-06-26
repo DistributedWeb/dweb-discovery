@@ -1,5 +1,5 @@
-var swarmDefaults = require('dat-swarm-defaults')
-var disc = require('discovery-swarm')
+var swarmDefaults = require('dweb-swarm-defaults')
+var disc = require('dweb-discovery-swarm')
 var xtend = require('xtend')
 
 module.exports = HyperdriveSwarm
@@ -17,12 +17,12 @@ function HyperdriveSwarm (archive, opts) {
   var isHyperdbInstance = !!(archive.get && archive.put && archive.replicate && archive.authorize)
 
   if (isHyperdbInstance && !archive.local) {
-    throw new Error('hyperdiscovery swarm must be created after the local hyperdb instance is ready!')
+    throw new Error('dweb-discovery swarm must be created after the local dappdb instance is ready!')
   }
 
   // Discovery Swarm Options
   opts = xtend({
-    port: 3282,
+    port: 6620,
     id: isHyperdbInstance ? archive.local.id.toString('hex') : archive.id,
     hash: false,
     stream: function (peer) {
